@@ -25,12 +25,17 @@ while True:
 
     if choice == "1":
         print("Saving file hash...")
-        original_hash = get_hash("important.txt")
 
-        with open("hashes.txt", "w") as file:
-            file.write(original_hash)
 
-        print("File hash saved successfully!")
+        try:
+            original_hash = get_hash("important.txt")
+
+            with open("hashes.txt", "w") as file:
+                file.write(original_hash)
+
+            print("File hash saved successfully!")
+        except FileNotFoundError:
+            print("Error: important.txt cannot be found!")
 
     elif choice == "2":
         print("Checking file integrity...")
